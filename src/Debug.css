@@ -1,0 +1,22 @@
+* {
+
+margin: 0;
+box-sizing: border-box;
+
+}
+
+
+.container {
+    margin: auto;
+    width: 100vh;
+    height: 100vh;
+}
+
+.container-1  {
+    display: flex;
+    justify-content: space-between;
+    height: inherit;
+    align-items: center;
+  
+    
+}

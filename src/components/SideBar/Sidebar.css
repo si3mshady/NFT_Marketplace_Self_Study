@@ -1,0 +1,43 @@
+
+.sideBarContainer {
+    /* overflow-x: hidden; 
+    overflow-x: hidden; overflow-x: hidden;  */
+    min-width: 150px;
+    background-color: whitesmoke;
+    display: flex;
+    border-right: grey solid 1px;
+    position: fixed;
+    max-height: calc(100vh );
+    z-index: 2;
+    left: 0;
+    top: calc(100vh-100px);
+    bottom: 0;
+    height: 100%;
+
+   
+
+    
+   
+}
+
+h1 {
+    margin: auto;
+}
+
+ul {
+   list-style-type: none;
+   
+}
+
+.ul_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ul_container  > li {
+
+    margin: auto;
+
+    margin-top: 90px;
+}
+

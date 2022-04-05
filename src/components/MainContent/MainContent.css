@@ -1,0 +1,16 @@
+.mainContentContainer {
+
+    flex-grow: 1;
+    display: flex;
+    /* background-color: aquamarine; */
+    flex-wrap: wrap;
+    overflow: auto;
+    z-index: -99;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+
+h1 {
+    margin: auto;
+}
+

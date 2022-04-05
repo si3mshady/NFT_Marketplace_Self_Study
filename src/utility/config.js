@@ -1,0 +1,2 @@
+export const nftTokenSmartContractAddress = '0x31a1CdbEF751C3cc157e7F171b9bCbCdDc8657e3'
+export const nftMarketSmartContractAddress = '0x75A0767BEB31147642ABe524b2E8C308240172f3'

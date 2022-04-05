@@ -1,0 +1,62 @@
+
+import React, { useEffect, useState} from 'react'
+import './Debug.css';
+import DebugABI from './debug.json'
+import { ethers } from "ethers";
+
+const marketAddress = '0xa90Fd541420e0D50952DF9Ca2277b7cFd741aC8c'
+
+
+
+export default  function App() {
+
+
+    const loadNfts = async () => {
+        console.log('Loading Nfts....')
+    
+        await window.ethereum.request({method: 'eth_accounts'});
+        const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
+        const marketContract = new ethers.Contract(marketAddress, DebugABI.abi, provider)
+        
+        const results = await marketContract.getAllAppts()
+
+        setCount(results.length)
+        console.log(results)
+
+        }
+
+    const registerNewToken = async () => {
+       
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = provider.getSigner()
+        const marketContract = new ethers.Contract(marketAddress, DebugABI.abi, signer)
+        await marketContract.createNewListing()
+
+    }
+
+    const [count,setCount] = React.useState(0)
+
+
+  return (  
+    
+    <div className='container'>
+        
+        <div className='container-1'>
+        <button onClick={registerNewToken}>Register New Token</button>
+            <h1>{count}</h1>
+        <button onClick={loadNfts} >Fetch Registered Tokens</button>
+        </div>
+        
+    </div>
+    
+    
+    
+    
+  );
+}
+
+
+
+
+
+

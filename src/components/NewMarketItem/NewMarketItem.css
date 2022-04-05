@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.container {
+    
+    display: flex;
+   
+    width: 100%;
+    
+  
+  
+}
+
+.container_qrc {
+    
+    display: flex;
+    margin-top: 140px;
+    width: 100%;
+    flex-direction: column;
+  
+  
+}
+
+
+.container > form {
+    margin: 100px 300px;
+    justify-content: center;
+   
+}
+
+
+input[type=text] {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+    font-family: 'Montserrat', sans-serif;
+  }
+
+
+
+  .container_qrc > img  {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+
+  .container_qrc > button {
+      height: 10%;
+      width: 10%;
+      margin: auto;
+     
+    
+  }
+
+  
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 40px;
+    text-align: center;
+    color: rgb(45, 45, 177);
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    text-align: center;
+    color: rgb(45, 45, 177);
+  }
+  .submitButton {
+      margin:auto;
+  }
+
+  .qrcCode {
+      border: black solid 8px;
+  }
+
+
+  input[type=submit] {
+   margin-left: 10%;
+    width: 80%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    /* border-radius: 4px; Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    background-color: #7612ed;
+    color: wheat;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+    /* box-shadow: 0 0 20px; */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
