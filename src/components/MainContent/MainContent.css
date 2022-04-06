@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rowdies:wght@300&display=swap');
+
 .mainContentContainer {
 
     flex-grow: 1;
@@ -14,3 +16,25 @@ h1 {
     margin: auto;
 }
 
+.MuiCard-root {
+    margin-right: 10px;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer !important;
+}
+
+.MuiButton-root  {
+    margin: auto !important;
+    cursor: pointer !important;
+    font-family: 'Permanent Marker', cursive;
+    opacity: 0.7;
+}
+
+
+
+.MuiButton-root:hover {
+    background-color: orange !important;
+}
+.css-1ri6ub7-MuiPaper-root-MuiCard-root {
+    box-shadow: none !important;
+}

@@ -7,6 +7,7 @@ import JsFileDownloader from 'js-file-downloader';
 import{ create as ipfsClient } from 'ipfs-http-client'
 import Web3modal from 'web3modal'
 import { ethers } from "ethers";
+
 import HealthMarket from '../../artifacts/contracts/Market.sol/MentalHealthMarket.json'
 import ApptToken from '../../artifacts/contracts/NFT.sol/ElDigitalAsset.json'
 import {ChainContext} from '../../context/ChainContext'
@@ -205,7 +206,8 @@ export default function NewMarketItem() {
             <input placeholder='Appointment Type (1-5)' name='appointmentType' type='text' onChange={handleChange} />
            
             <input placeholder='Doctor consultation fee' name='fee' type='text' onChange={handleChange}/>         
-            <input type='submit'/>
+           
+             <input type='submit'/>
         </form>): 
         
         (
@@ -213,8 +215,10 @@ export default function NewMarketItem() {
             
           <img className='qrcCode' src={uri} alt='' title='' />
           <a onClick={handleDownload} className='submitButton' > Download  </a> 
-          <input type='file' className='submitButton' onClick={getFile} />
+          <input type='file' className='submitButton' onChange={getFile} />
           <a  onClick={createItem} className='submitButton'>Create Market Item</a>
+
+          
           
           </div>
                    

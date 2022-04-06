@@ -19,7 +19,7 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
         export const ChainProvider = ({children}) => { 
 
             const buyNft = async (token) => {
-
+                alert('buyingNFt')
                 const web3modal = new Web3modal()
                 const connection = await web3modal.connect()
                 const provider =  await new ethers.providers.Web3Provider(connection)
@@ -55,7 +55,6 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                 console.log('Loading Nfts....')
 
                 await window.ethereum.request({method: 'eth_accounts'});
-
 
                 // const provider = new ethers.providers.Web3Provider(window.ethereum)
                 // https://rpc-mumbai.matic.today"
@@ -111,6 +110,66 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
             
             }
 
+
+
+            const loadMyScheduledNfts = async () => {
+                console.log('Loading Nfts....')
+
+                await window.ethereum.request({method: 'eth_accounts'});
+
+                // const provider = new ethers.providers.Web3Provider(window.ethereum)
+                // https://rpc-mumbai.matic.today"
+                const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
+
+
+                const tokenContract = new ethers.Contract(nftTokenSmartContractAddress, ApptToken.abi, provider)
+                const marketContract = new ethers.Contract(nftMarketSmartContractAddress, HealthMarket.abi, provider)
+                const results = await marketContract.getAllAppts()
+
+                console.log(results)
+                
+                try { let appts = await Promise.all(results.map(async (i,index) => {
+            
+                    let tokenURI = await tokenContract.tokenURI(i.nftTokenId) // the url is provided when provide the token id 
+                    const metadata = await axios.get(tokenURI)
+                    const fee = await ethers.utils.formatUnits(i.fee.toString(), 'ether')
+                    const data = await axios.get(tokenURI)
+                    console.log(data)
+                    
+                    
+            
+                    let items = {
+            
+                      apptId: i.apptId.toString(),
+                      epochTime: i.epochTime.toString(),
+                      appointmentType: i.appointmentType.toString(),
+                      fee: fee,
+                      imageURI: imageURI,
+                      nftTokenId: i.nftTokenId,
+                      url: data.data.nftUri,
+                      tokenURI,
+                     
+                      
+                    }
+                    return items
+                    
+                }
+            
+                ))
+                console.log(appts)
+                setTokens(appts)
+
+
+                setLoadingState(!loadingState)
+         
+
+            }  catch(e) {
+
+                    console.log(e)
+                }
+               
+            
+            }
     
         const [tokens, setTokens] = useState([])
         const [loadingState, setLoadingState] = useState(false)

@@ -8,13 +8,19 @@ export default function Datacard({url}) {
     return (
         <div className='dataCard'>
 
+        
             <div className='dataCard_Container'> 
-
-                        <div>
-                        <img src={url} />
                         
+                        <div className='dataCard_Container level_a'>
+
+                                    <div className='dataCard_Container level_b'> 
+                                    <img src={url} />
+                                    <button  onClick={(`buyNft`)} className='button_green'>Add Appt</button>
+                                    </div>
+
                         </div>
-                        <button  onClick={buyNft} className='button_green'>Add Appt</button>
+                       
+                       
 
             </div>
 
