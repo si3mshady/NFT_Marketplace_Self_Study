@@ -1,2 +1,2 @@
-export const nftTokenSmartContractAddress = '0x24f27636833f2d0be0Ea733c384786D78748F8Ca'
-export const nftMarketSmartContractAddress = '0x5a686dD4F6bc662F12d7bC2EC0C60485746c9c24'
+export const nftTokenSmartContractAddress = '0x4655Bc08A8957f5ed7B7B9aE392B653d7b6CfcCF'
+export const nftMarketSmartContractAddress = '0xE3dC51F68B9e3bAB55b356b3372E8deBcaE36d27'

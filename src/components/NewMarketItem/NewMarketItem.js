@@ -84,7 +84,7 @@ export default function NewMarketItem() {
 
 
       transaction = await contract.createNewListing(nftTokenSmartContractAddress, tokenId, 
-        formData.date, formData.appointmentType, price, 
+        formData.date, formData.appointmentType, price, formData.address,
           {value: listingPrice})
 
 
