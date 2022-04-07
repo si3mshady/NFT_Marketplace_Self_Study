@@ -17,9 +17,9 @@ function App() {
     <div className='container'> 
     <SideBar />
     <Routes> 
-      <Route path="/available" element={ <NewMarketItem/>} />     
+      <Route path="/new" element={ <NewMarketItem/>} />     
       <Route path="/mine" element={ <MyAppts/>} />              
-      <Route path="/" element={ <MainContent/>} />    
+      <Route path="/available" element={ <MainContent/>} />    
     </Routes>
     </div>
     </>

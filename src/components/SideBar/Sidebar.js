@@ -9,20 +9,26 @@ export default function Sidebar() {
             <aside className='sideBarContainer'>
             <ul className='ul_container'>                
                 <li>
-                <Link to='/'>
+                {/* <p>Available Appts</p> */}
+                <Link to='/available'>
                 <FaRegUser style={{fontSize: "50px",color:"#2d2db1"}}/>
+                
                 </Link>
                 </li>
                 <li>
-
-                 <Link to='/available'>
+                {/* <p>Schedule New</p> */}
+                 <Link to='/new'>
                      <FaRegPlusSquare style={{fontSize: "50px", color: "#2d2db1"}}/>
+                    
                  </Link>   
+                 
                 
                 </li>
                 <li>
+                {/* <p>My Scheduled Appointments</p> */}
                 <Link to='/mine'>
                      <FaSearchengin style={{fontSize: "50px",color:"#2d2db1"}} /> 
+                     
                 </Link>
               
                 </li>
