@@ -64,7 +64,7 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
 
                 const tokenContract = new ethers.Contract(nftTokenSmartContractAddress, ApptToken.abi, provider)
                 const marketContract = new ethers.Contract(nftMarketSmartContractAddress, HealthMarket.abi, provider)
-                const results = await marketContract.getAllAppts()
+                const results = await marketContract.getListedAppointments()
 
                 console.log(results)
                 
