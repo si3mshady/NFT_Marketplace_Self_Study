@@ -5,6 +5,10 @@ import {ChainContext} from '../../context/ChainContext'
 
 export default function Datacard({url}) {
     const {starterData, loadingState, setLoadingState,buyNft, tokens} = React.useContext(ChainContext)
+
+    const testFunc = () => {
+        console.log('vroom')
+    }
     return (
         <div className='dataCard'>
 
@@ -15,7 +19,7 @@ export default function Datacard({url}) {
 
                                     <div className='dataCard_Container level_b'> 
                                     <img src={url} />
-                                    <button  onClick={(`buyNft`)} className='button_green'>Add Appt</button>
+                                    <button onClick={()=>  {console.log('test')}} className='button_green'>Add Appt</button>
                                     </div>
 
                         </div>

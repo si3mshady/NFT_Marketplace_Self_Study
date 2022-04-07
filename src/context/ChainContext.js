@@ -18,15 +18,16 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
 
         export const ChainProvider = ({children}) => { 
 
-            const buyNft = async (token) => {
-                alert('buyingNFt')
+            const buyNft = async (tokenId, fee) => {
+
+                console.log(tokenId, fee )
                 const web3modal = new Web3modal()
                 const connection = await web3modal.connect()
                 const provider =  await new ethers.providers.Web3Provider(connection)
                 const signer = provider.getSigner()
                 const marketContract = new ethers.Contract(nftMarketSmartContractAddress, HealthMarket.abi, signer)
-                const fee = ethers.utils.parseUnits(tokens.price.toString(), 'ether')
-                const tx = await HealthMarket.createMarketSale(token, ApptToken, {value: fee}) 
+                var fee = await ethers.utils.parseUnits(fee, 'ether')
+                const tx = await HealthMarket.createMarketSale(tokenId, ApptToken, {value: fee}) 
                 await tx.wait()
                 loadNfts() 
                 return (

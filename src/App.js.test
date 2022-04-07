@@ -14,14 +14,14 @@ export default  function App() {
     const loadNfts = async () => {
         console.log('Loading Nfts....')
     
-        await window.ethereum.request({method: 'eth_accounts'});
-        const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
-        const marketContract = new ethers.Contract(marketAddress, DebugABI.abi, provider)
+        // await window.ethereum.request({method: 'eth_accounts'});
+        // const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
+        // const marketContract = new ethers.Contract(marketAddress, DebugABI.abi, provider)
         
-        const results = await marketContract.getAllAppts()
+        // const results = await marketContract.getAllAppts()
 
-        setCount(results.length)
-        console.log(results)
+        // setCount(results.length)
+        // console.log(results)
 
         }
 
@@ -44,7 +44,7 @@ export default  function App() {
         <div className='container-1'>
         <button onClick={registerNewToken}>Register New Token</button>
             <h1>{count}</h1>
-        <button onClick={loadNfts} >Fetch Registered Tokens</button>
+        <button onClick={{loadNfts}} >Fetch Registered Tokens</button>
         </div>
         
     </div>
