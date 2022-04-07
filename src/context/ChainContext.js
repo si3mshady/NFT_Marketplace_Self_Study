@@ -27,7 +27,7 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                 const signer = provider.getSigner()
                 const marketContract = new ethers.Contract(nftMarketSmartContractAddress, HealthMarket.abi, signer)
                 var fee = await ethers.utils.parseUnits(fee, 'ether')
-                const tx = await HealthMarket.createMarketSale(tokenId, ApptToken, {value: fee}) 
+                const tx = await marketContract.createMarketSale(nftTokenSmartContractAddress,tokenId, {value: fee}) 
                 await tx.wait()
                 loadNfts() 
                 return (

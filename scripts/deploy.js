@@ -22,11 +22,6 @@ async function main() {
   console.log("NFT deployed to:", eda.address);
 
 
-  const Debug = await hre.ethers.getContractFactory("Debug");
-  const debug = await Debug.deploy()
-
-  await debug.deployed()
-  console.log("Debugger deployed to:", debug.address);
 
 }
 
