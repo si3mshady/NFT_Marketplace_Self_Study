@@ -15,13 +15,13 @@ export default function Sidebar() {
                 </li>
                 <li>
 
-                 <Link to='/new'>
+                 <Link to='/available'>
                      <FaRegPlusSquare style={{fontSize: "50px", color: "#2d2db1"}}/>
                  </Link>   
                 
                 </li>
                 <li>
-                <Link to='/view'>
+                <Link to='/mine'>
                      <FaSearchengin style={{fontSize: "50px",color:"#2d2db1"}} /> 
                 </Link>
               

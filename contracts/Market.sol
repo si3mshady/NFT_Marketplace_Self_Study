@@ -76,10 +76,12 @@ contract MentalHealthMarket is ReentrancyGuard {
             payable(msg.sender),
             epochTime, 
             appointmentType, 
-            payable(address(this)),
+            payable(address(0)),
             fee,
             true
             );
+
+            
 
             IERC721(nftContract).transferFrom(msg.sender,address(this), nftTokenId);
             // transfer the ownership of token to marketplace 
@@ -120,7 +122,7 @@ contract MentalHealthMarket is ReentrancyGuard {
                  Appointment[] memory appointments = new Appointment[](unscheduledAppts);
 
                  for (uint i = 0; i < currentAppointmentListings; i++) {
-                     if (idToAppointment[i + 1].patientWallet == address(this)) {
+                     if (idToAppointment[i + 1].patientWallet == address(0)) {
 
                             uint currentApptId = idToAppointment[i + 1].apptId;
                             Appointment storage currentAppt = idToAppointment[currentApptId];

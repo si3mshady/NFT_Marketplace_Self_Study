@@ -29,25 +29,27 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                 var fee = await ethers.utils.parseUnits(fee, 'ether')
                 const tx = await marketContract.createMarketSale(nftTokenSmartContractAddress,tokenId, {value: fee}) 
                 await tx.wait()
+                // implement a use effect here 
                 loadNfts() 
-                return (
 
-                    <div className='main_container' style={{display: 'flex'}}>
+                // return (
 
-                                <div className='main_container level1'  style={{display: 'flex'}}>
+                //     <div className='main_container' style={{display: 'flex'}}>
+
+                //                 <div className='main_container level1'  style={{display: 'flex'}}>
 
 
-                                            <div className='main_container level2'>
+                //                             <div className='main_container level2'>
 
-                                                    {data.map((nft, i) => {
-                                                        console.log(nft)
-                                                    }) }
+                //                                     {data.map((nft, i) => {
+                //                                         console.log(nft)
+                //                                     }) }
 
-                                            </div>                                                        
-                                </div>
+                //                             </div>                                                        
+                //                 </div>
 
-                    </div>
-                )
+                //     </div>
+                // )
             }
 
 
@@ -66,7 +68,7 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                 const marketContract = new ethers.Contract(nftMarketSmartContractAddress, HealthMarket.abi, provider)
                 const results = await marketContract.getListedAppointments()
 
-                console.log(results)
+                console.log('All avaiable appts',results)
                 
                 try { let appts = await Promise.all(results.map(async (i,index) => {
             
@@ -87,6 +89,8 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                       imageURI: imageURI,
                       nftTokenId: i.nftTokenId,
                       url: data.data.nftUri,
+                      patientWallet: i.patientWallet,
+                      providerWallet: i.providerWallet,
                       tokenURI,
                      
                       
@@ -101,6 +105,7 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
 
 
                 setLoadingState(!loadingState)
+                return appts
          
 
             }  catch(e) {
@@ -111,21 +116,33 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
             
             }
 
+            const getConnectedMetaMaskAcc = async () => {
 
+                const web3Modal = new Web3modal();
+
+
+                let provider = await web3Modal.connect();
+                const handler = new ethers.providers.Web3Provider(provider);
+                const accounts = await handler.listAccounts();
+                const connected_account = accounts[0]
+                return connected_account
+
+
+            }
 
             const loadMyScheduledNfts = async () => {
-                console.log('Loading Nfts....')
+                console.log('Loading My Nfts....')
 
                 await window.ethereum.request({method: 'eth_accounts'});
 
                 // const provider = new ethers.providers.Web3Provider(window.ethereum)
                 // https://rpc-mumbai.matic.today"
-                const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
-
-
+                let provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.matic.today")
                 const tokenContract = new ethers.Contract(nftTokenSmartContractAddress, ApptToken.abi, provider)
                 const marketContract = new ethers.Contract(nftMarketSmartContractAddress, HealthMarket.abi, provider)
                 const results = await marketContract.getAllAppts()
+
+                console.log('ALL scheduled appts', results)
 
                 console.log(results)
                 
@@ -141,14 +158,17 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
             
                     let items = {
             
-                      apptId: i.apptId.toString(),
-                      epochTime: i.epochTime.toString(),
-                      appointmentType: i.appointmentType.toString(),
-                      fee: fee,
-                      imageURI: imageURI,
-                      nftTokenId: i.nftTokenId,
-                      url: data.data.nftUri,
-                      tokenURI,
+                        apptId: i.apptId.toString(),
+                        epochTime: i.epochTime.toString(),
+                        appointmentType: i.appointmentType.toString(),
+                        fee: fee,
+                        imageURI: imageURI,
+                        nftTokenId: i.nftTokenId,
+                        url: data.data.nftUri,
+                        patientWallet: i.patientWallet,
+                        providerWallet: i.providerWallet,
+                        tokenURI,
+                       
                      
                       
                     }
@@ -157,8 +177,16 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                 }
             
                 ))
-                console.log(appts)
-                setTokens(appts)
+                console.log('Appts that have been scheduled',appts)
+                
+
+                let connected_acc = await getConnectedMetaMaskAcc()
+                console.log('MM wallet',  connected_acc.toString())
+
+            
+                const result = await appts.filter(obj => obj.patientWallet === connected_acc )
+                console.log('My filtered appts', result)
+                setMyAppts(result)
 
 
                 setLoadingState(!loadingState)
@@ -173,9 +201,11 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
             }
     
         const [tokens, setTokens] = useState([])
+        const [myAppts, setMyAppts] = useState([])
         const [loadingState, setLoadingState] = useState(false)
         const [starterData, setData] = useState([])
         const [imageURI, setImageURI] = useState('')
+        const [metaMaskAccounts, setMetaMaskAccounts] = useState('')
     
 
         
@@ -183,14 +213,15 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
         useEffect(() => {
             setData(data)
             loadNfts()
+            loadMyScheduledNfts()
            
     
         },[])
        
     
         return (
-            <ChainContext.Provider value={{starterData, tokens, setTokens, 
-            loadingState, setLoadingState, loadNfts,buyNft}}>
+            <ChainContext.Provider value={{starterData, loadMyScheduledNfts, tokens, setTokens, 
+            loadingState, setLoadingState,myAppts, loadNfts,buyNft}}>
                 {children}
             </ChainContext.Provider>
         )
