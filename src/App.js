@@ -18,7 +18,7 @@ function App() {
     <SideBar />
     <Routes> 
       <Route path="/new" element={ <NewMarketItem/>} />     
-      <Route path="/mine" element={ <MyAppts/>} />              
+      <Route path="/scheduled" element={ <MyAppts/>} />              
       <Route path="/available" element={ <MainContent/>} />    
     </Routes>
     </div>

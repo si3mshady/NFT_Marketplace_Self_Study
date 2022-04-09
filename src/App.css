@@ -31,7 +31,7 @@ a {
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    border-radius: 100px;
+    /* border-radius: 100px; */
 
     font-family: 'Permanent Marker', cursive;
   text-align: center;
@@ -48,8 +48,8 @@ a {
 
 
 a:hover {
-      background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
-    box-shadow: 0 0 10px;
+      /* background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%); */
+    /* box-shadow: 0 0 10px; */
     transform: scale(.8);
 }
 

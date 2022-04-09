@@ -2,7 +2,8 @@
 .sideBarContainer {
     /* overflow-x: hidden; 
     overflow-x: hidden; overflow-x: hidden;  */
-    min-width: 150px;
+    flex:1;
+    max-width: 150px;
     background-color: whitesmoke;
     display: flex;
     border-right: grey solid 1px;
@@ -26,18 +27,27 @@ h1 {
 
 ul {
    list-style-type: none;
-   
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   margin-left: -21%;
 }
 
-.ul_container {
+/* .ul_container {
     display: flex;
     flex-direction: column;
-}
+    margin-left: -21%;
+    margin:auto;
+    align-items: center; */
+/* } */
 
-.ul_container  > li {
+/* .ul_container  > li  {
+    /* text-align: center; */
+    /* margin: auto; */
+    
+    /* background-color: aqua; */
 
-    margin: auto;
-
-    margin-top: 90px;
-}
+    /* margin-top: 90px; */
+/* }  */
 

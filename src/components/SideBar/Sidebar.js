@@ -11,14 +11,17 @@ export default function Sidebar() {
                 <li>
                 {/* <p>Available Appts</p> */}
                 <Link to='/available'>
+                    
                 <FaRegUser style={{fontSize: "50px",color:"#2d2db1"}}/>
-                
+                <h3>Available Appts</h3>
                 </Link>
                 </li>
                 <li>
                 {/* <p>Schedule New</p> */}
                  <Link to='/new'>
-                     <FaRegPlusSquare style={{fontSize: "50px", color: "#2d2db1"}}/>
+                <FaRegPlusSquare style={{fontSize: "50px", color: "#2d2db1"}}/>
+                 <h3>Schedule New Appt</h3>
+                   
                     
                  </Link>   
                  
@@ -26,8 +29,9 @@ export default function Sidebar() {
                 </li>
                 <li>
                 {/* <p>My Scheduled Appointments</p> */}
-                <Link to='/mine'>
+                <Link to='/scheduled'>
                      <FaSearchengin style={{fontSize: "50px",color:"#2d2db1"}} /> 
+                     <h3>My appts</h3>
                      
                 </Link>
               
