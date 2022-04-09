@@ -1,4 +1,6 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
 * {
     margin: 0;
@@ -32,8 +34,8 @@ a {
     font-size: 16px;
     margin: 4px 2px;
     /* border-radius: 100px; */
-
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Permanent Marker', cursive; */
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
