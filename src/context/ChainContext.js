@@ -15,6 +15,10 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
 
  export const ChainContext = React.createContext();
 
+ 
+
+
+
 
         export const ChainProvider = ({children}) => { 
 
@@ -51,7 +55,18 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
                 //     </div>
                 // )
             }
+    const connectWallet = async () => { 
 
+        if (window.ethereum) {
+            // await window.ethereum.request({method: 'eth_accounts'});
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+
+            setConnected(true)
+             
+        }
+
+    }
+                
 
 
             const loadNfts = async () => {
@@ -206,11 +221,13 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
         const [starterData, setData] = useState([])
         const [imageURI, setImageURI] = useState('')
         const [metaMaskAccounts, setMetaMaskAccounts] = useState('')
+        const [connected, setConnected] = React.useState(false)
     
 
         
     
         useEffect(() => {
+            connectWallet()
             setData(data)
             loadNfts()
             loadMyScheduledNfts()
@@ -221,9 +238,10 @@ import {nftTokenSmartContractAddress,nftMarketSmartContractAddress } from '../ut
     
         return (
             <ChainContext.Provider value={{starterData, loadMyScheduledNfts, tokens, setTokens, 
-            loadingState, setLoadingState,myAppts, loadNfts,buyNft}}>
+            loadingState, setLoadingState,myAppts, connected, loadNfts,buyNft}}>
                 {children}
             </ChainContext.Provider>
         )
 
 }
+        

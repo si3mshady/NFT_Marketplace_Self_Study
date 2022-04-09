@@ -2,34 +2,12 @@ import React from 'react'
 import './Navbar.css'
 import {ethers} from 'ethers'
 import {FaEthereum} from 'react-icons/fa'
-
+import {ChainContext} from '../../context/ChainContext'
 export default function Navbar() {
 
-    const [connected, setConnected] = React.useState(false)
-
    
-    const connectWallet = async () => {
-
-        if (window.ethereum) {
-            // await window.ethereum.request({method: 'eth_accounts'});
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-            setConnected(true)
-             
-        }
-                
-        
-        {
-
-            await window.ethereum.request({method: 'eth_accounts'});
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
-            await provider.send("eth_requestAccounts", []);
-
-          
-        }
-       
-    
-    }
+    const {connected, connectWallet} = React.useContext(ChainContext)
+   
 
 
     return (
