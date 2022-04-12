@@ -19,10 +19,12 @@ RUN yarn add  package.json
 RUN echo node --version
 RUN yarn run build
 
-FROM node:16 AS step2
+FROM nginx:latest 
 WORKDIR /app
-RUN mkdir -p /build
-COPY --from=step1 /app/build/ /build
-EXPOSE 5000
+RUN mkdir -p build/
+COPY --from=step1 /app/build/ /app/build/
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+EXPOSE 80
 LABEL developer=${OWNER}
-CMD ["serve","-s","build"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
