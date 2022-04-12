@@ -18,7 +18,7 @@ RUN yarn install  package.json
 RUN echo node --version
 RUN yarn run build
 
-FROM node:latest AS step2
+FROM node:16 AS step2
 WORKDIR /app
 RUN mkdir -p /build
 COPY --from=step1 /app/build/ /build
