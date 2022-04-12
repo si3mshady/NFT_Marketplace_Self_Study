@@ -13,8 +13,9 @@ COPY hardhat.config.js hardhat.config.js
 COPY package.json package.json
 COPY .secret .secret
 
+
 RUN apt-get update
-RUN yarn install  package.json
+RUN yarn add  package.json
 RUN echo node --version
 RUN yarn run build
 
