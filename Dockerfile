@@ -21,10 +21,9 @@ RUN yarn run build
 
 FROM nginx:latest 
 WORKDIR /app
-RUN mkdir -p build/
-COPY --from=step1 /app/build/ /app/build/
+RUN mkdir -p /main
+COPY --from=step1 /app/build/ /main
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 EXPOSE 80
 LABEL developer=${OWNER}
-EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
