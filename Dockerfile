@@ -23,7 +23,8 @@ FROM nginx:latest
 WORKDIR /app
 RUN mkdir -p /main
 COPY --from=step1 /app/build/ /main
-COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 EXPOSE 80
 LABEL developer=${OWNER}
 CMD ["nginx", "-g", "daemon off;"]
